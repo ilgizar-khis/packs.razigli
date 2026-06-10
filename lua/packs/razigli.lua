@@ -159,6 +159,7 @@ function M.toggle()
 	M.clear_buf_setup()
 	-- if win don't exist create new win
 	if not M.win or not vim.api.nvim_win_is_valid(M.win) then
+		M.win_setup()
 	else
 		-- close and delete win
 		vim.api.nvim_win_close(M.win, true)
