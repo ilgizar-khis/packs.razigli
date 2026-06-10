@@ -49,16 +49,22 @@ function M.clear()
 	M.update()
 end
 
-function M.update()
-	-- get all datas
-	local data = vim.pack.get()
-	-- get all pkgs
+-- get all pkgs
+function M.parse_all_pkgs(data)
 	local lines = {}
 	for _, pkg in ipairs(data) do
 		local status = pkg.active and "[+]" or "[-]"
 		table.insert(lines, status .. " name = " .. pkg.spec.name)
 		table.insert(lines, "\tsrc = " .. pkg.spec.src)
 	end
+	return lines
+end
+
+function M.update()
+	-- get all datas
+	local data = vim.pack.get()
+	-- get all pkgs
+	local lines = M.parse_all_pkgs(data)
 	-- get list of disables pkgs
 	local to_clear_lines = {}
 	local to_clear_count = 0
