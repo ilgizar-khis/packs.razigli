@@ -106,6 +106,10 @@ function M.toggle()
 		vim.keymap.set("n", M.key_update, function()
 			M.update()
 		end, { buffer = M.clear_buf })
+		-- goto next
+		vim.keymap.set("n", "<Tab>", function()
+			M.to_next()
+		end, { buffer = M.clear_buf })
 	end
 	-- calculate col and row params
 	local col = math.floor((vim.api.nvim_get_option("columns") - M.width) / 2)
