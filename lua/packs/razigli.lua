@@ -35,6 +35,26 @@ function M.to_next()
 	vim.api.nvim_win_set_cursor(M.win, { 1, 3 })
 end
 
+-- goto prev pkg
+function M.to_prev()
+	-- get datas
+	local lineNr = vim.api.nvim_win_get_cursor(M.win)[1]
+	local buf = vim.api.nvim_win_get_buf(M.win)
+	local lines = vim.api.nvim_buf_get_lines(buf, 0, lineNr, false)
+	-- iterate all lines
+	for i in #lines, 1, -1 do
+		local line = lines[i]
+		-- if find line
+		if string.find(line, "^%[[%+%- ]%]") then
+			-- jump to next name
+			vim.api.nvim_win_set_cursor(M.win, { i, 3 })
+			return
+		end
+	end
+	-- jump to start
+	vim.api.nvim_win_set_cursor(M.win, { 1, 3 })
+end
+
 function M.clear()
 	-- get lines from clear_buf
 	local lines = vim.api.nvim_buf_get_lines(M.clear_buf, 2, -1, false)
