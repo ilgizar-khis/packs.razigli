@@ -45,9 +45,17 @@ function M.get_prev_line()
 		local line = lines[i]
 		-- if find line
 		if string.find(line, "^%[[%+%- ]%]") then
-			-- jump to next name
-			vim.api.nvim_win_set_cursor(M.win, { i, 3 })
-			return
+			return i
+		end
+	end
+	-- check from last
+	local last_line = vim.api.nvim_buf_line_count(buf)
+	lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+	for i = last_line, 1, -1 do
+		local line = lines[i]
+		-- if find line
+		if string.find(line, "^%[[%+%- ]%]") then
+			return i
 		end
 	end
 end
