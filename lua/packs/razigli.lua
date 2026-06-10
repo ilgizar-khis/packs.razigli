@@ -214,10 +214,12 @@ function M.clear_buf_setup()
 	end
 end
 
+-- function to setup win
 function M.win_setup()
 	-- calculate col and row params
 	local col = math.floor((vim.api.nvim_get_option("columns") - M.width) / 2)
 	local row = math.floor((vim.api.nvim_get_option("lines") - M.height) / 2)
+	-- create and save the win
 	M.win = vim.api.nvim_open_win(M.home_buf, true, {
 		relative = "editor",
 		width = M.width,
