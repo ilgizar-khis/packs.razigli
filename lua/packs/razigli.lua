@@ -48,8 +48,7 @@ function M.update()
 		end
 	end
 	local info = "total:" .. #data .. "([+]:" .. #data - to_clear_count .. ", [-]:" .. to_clear_count .. ")"
-	table.insert(lines, 1, info)
-	table.insert(to_clear_lines, 1, info)
+	vim.opt_local.winbar = vim.opt_local.winbar .. "%=" .. info
 	-- append data tp home_buf
 	if M.home_buf then
 		vim.api.nvim_buf_set_lines(M.home_buf, 0, -1, true, lines)
