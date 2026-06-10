@@ -48,11 +48,9 @@ function M.update()
 		end
 	end
 	local info = "total:" .. #data .. "([+]:" .. #data - to_clear_count .. ", [-]:" .. to_clear_count .. ")"
-	table.insert(lines, 1, info)
-	table.insert(to_clear_lines, 1, info)
 	-- append data tp home_buf
 	if M.home_buf then
-		vim.api.nvim_buf_set_lines(M.home_buf, 2, -1, true, lines)
+		vim.api.nvim_buf_set_lines(M.home_buf, 1, -1, true, lines)
 	end
 	-- append data tp clear_buf
 	if M.clear_buf then
@@ -66,10 +64,11 @@ function M.toggle()
 	if not M.home_buf then
 		M.home_buf = vim.api.nvim_create_buf(false, true)
 		-- add bufferline to home_buf
-		vim.api.nvim_buf_set_lines(M.home_buf, 0, 0, true, { "[1:home]  2:clear", "" })
+		-- vim.api.nvim_buf_set_lines(M.home_buf, 0, 0, true, { , "" })
 		-- keymap to jump clear_buf
 		vim.keymap.set("n", M.key_clear_buf, function()
 			vim.api.nvim_win_set_buf(M.win, M.clear_buf)
+			vim.opt_local.winbar = " 1:home  [2:clear]"
 		end, { buffer = M.home_buf })
 		-- update data
 		vim.keymap.set("n", M.key_update, function()
@@ -79,11 +78,10 @@ function M.toggle()
 	-- create clear buffer
 	if not M.clear_buf then
 		M.clear_buf = vim.api.nvim_create_buf(false, true)
-		-- add bufferline to home_buf
-		vim.api.nvim_buf_set_lines(M.clear_buf, 0, 0, true, { " 1:home  [2:clear]", "" })
 		-- keymap to jump home_buf
 		vim.keymap.set("n", M.key_home_buf, function()
 			vim.api.nvim_win_set_buf(M.win, M.home_buf)
+			vim.opt_local.winbar = "[1:home]  2:clear "
 		end, { buffer = M.clear_buf })
 		-- keymap to clear
 		vim.keymap.set("n", M.key_clear, function()
@@ -111,6 +109,8 @@ function M.toggle()
 		vim.api.nvim_win_set_option(M.win, "number", false)
 		vim.api.nvim_win_set_option(M.win, "relativenumber", false)
 		vim.api.nvim_win_set_option(M.win, "signcolumn", "no")
+		-- add bufferline to winbar
+		vim.opt_local.winbar = "[1:home]  2:clear"
 		M.update()
 		-- goto start of list
 		vim.api.nvim_win_set_cursor(M.win, { 4, 3 })
