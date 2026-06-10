@@ -75,15 +75,19 @@ end
 
 -- toggle status of pkg
 function M.toggle_status()
+	-- get current buf and checl with M.clear_buf
 	local buf = vim.api.nvim_win_get_buf(M.win)
 	if buf == M.clear_buf then
+		-- get lineNr of prev pkg name and line
 		local number = M.get_prev_line(true)
 		local line = vim.api.nvim_buf_get_lines(M.clear_buf, number - 1, number, false)[1]
+		-- set "[-]" to "[ ]" or "[ ]" to "[-]"
 		if string.find(line, "%[%-%]") then
 			line, _ = string.gsub(line, "%[%-%]", "[ ]")
 		elseif string.find(line, "%[ %]") then
 			line, _ = string.gsub(line, "%[ %]", "[-]")
 		end
+		-- set lines
 		vim.api.nvim_buf_set_lines(M.clear_buf, number - 1, number, false, { line })
 	end
 end
