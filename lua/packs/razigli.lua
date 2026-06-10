@@ -4,16 +4,14 @@ local M = {
 	home_buf = nil,
 	clear_buf = nil,
 	update_buf = nil,
-	params = {
-		width = 160,
-		height = 40,
-		border = "single",
-		keymap = {
-			home_buf = "1",
-			clear_buf = "2",
-			clear = "<CR>",
-			update = "<S-u>",
-		},
+	width = 160,
+	height = 40,
+	border = "single",
+	keymap = {
+		home_buf = "1",
+		clear_buf = "2",
+		clear = "<CR>",
+		update = "<S-u>",
 	},
 }
 
@@ -73,17 +71,17 @@ function M.toggle()
 		end, { buffer = M.clear_buf })
 	end
 	-- calculate col and row params
-	local col = math.floor((vim.api.nvim_get_option("columns") - M.params.width) / 2)
-	local row = math.floor((vim.api.nvim_get_option("lines") - M.params.height) / 2)
+	local col = math.floor((vim.api.nvim_get_option("columns") - M.width) / 2)
+	local row = math.floor((vim.api.nvim_get_option("lines") - M.height) / 2)
 	-- if win don't exist create new win
 	if not M.win or not vim.api.nvim_win_is_valid(M.win) then
 		M.win = vim.api.nvim_open_win(M.home_buf, true, {
 			relative = "editor",
-			width = M.params.width,
-			height = M.params.height,
+			width = M.width,
+			height = M.height,
 			col = col,
 			row = row,
-			border = M.params.border,
+			border = M.border,
 		})
 		-- delet signcolumn and numberline
 		vim.api.nvim_win_set_option(M.win, "number", false)
@@ -98,12 +96,12 @@ function M.toggle()
 end
 
 -- function to setup
-function M.setup(params)
+function M.setup(opts)
 	-- set params
-	if params then
-		for key, value in pairs(params) do
-			if M.params[key] then
-				M.params[key] = value
+	if opts then
+		for key, value in pairs(opts) do
+			if M[key] then
+				M[key] = value
 			end
 		end
 	end
