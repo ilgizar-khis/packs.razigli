@@ -47,9 +47,11 @@ end
 -- function to setup
 function M.setup(params)
 	-- set params
-	for key, value in pairs(params) do
-		if M.params[key] then
-			M.params[key] = value
+	if params then
+		for key, value in pairs(params) do
+			if M.params[key] then
+				M.params[key] = value
+			end
 		end
 	end
 end
