@@ -11,6 +11,11 @@ local M = {
 	},
 }
 
+function M.clear()
+	local lines = vim.api.nvim_buf_get_line(M.clear_buf, 2, -1)
+	vim.notify(lines[1])
+end
+
 function M.update()
 	local data = vim.pack.get()
 	if M.home_buf then
