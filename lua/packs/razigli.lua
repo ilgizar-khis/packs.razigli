@@ -9,6 +9,7 @@ local M = {
 	border = "single",
 	key_home_buf = "1",
 	key_clear_buf = "2",
+	key_toggle_status = "<Space>",
 	key_clear = "<CR>",
 	key_update = "<S-u>",
 	key_to_next = "<Tab>",
