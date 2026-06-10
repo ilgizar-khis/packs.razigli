@@ -22,6 +22,17 @@ function M.update()
 		end
 		vim.api.nvim_buf_set_lines(M.home_buf, 2, -1, true, lines)
 	end
+
+	if M.clear_buf then
+		local lines = {}
+		for _, pkg in ipairs(data) do
+			if not pkg.active then
+				table.insert(lines, "[-] name = " .. pkg.spec.name)
+				table.insert(lines, "\tsrc = " .. pkg.spec.src)
+			end
+		end
+		vim.api.nvim_buf_set_lines(M.clear_buf, 2, -1, true, lines)
+	end
 end
 
 -- function to open/close win
