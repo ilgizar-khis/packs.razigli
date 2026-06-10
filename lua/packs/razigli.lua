@@ -19,7 +19,6 @@ function M.update()
 			local status = pkg.active and "[+]" or "[-]"
 			table.insert(lines, status .. " name = " .. pkg.spec.name)
 			table.insert(lines, "\tsrc = " .. pkg.spec.src)
-			table.insert(lines, "\tpath = " .. pkg.path)
 		end
 		vim.api.nvim_buf_set_lines(M.home_buf, 2, -1, true, lines)
 	end
@@ -31,7 +30,7 @@ function M.toggle()
 	if not M.home_buf then
 		M.home_buf = vim.api.nvim_create_buf(false, true)
 		-- add bufferline to home_buf
-		vim.api.nvim_buf_set_lines(M.home_buf, 0, 0, true, { "[1:home]  2:clear   3:update", "" })
+		vim.api.nvim_buf_set_lines(M.home_buf, 0, 0, true, { "[1:home]  2:clear", "" })
 		-- keymap to jump clear_buf
 		vim.keymap.set("n", "2", function()
 			vim.api.nvim_win_set_buf(M.win, M.clear_buf)
@@ -41,7 +40,7 @@ function M.toggle()
 	if not M.clear_buf then
 		M.clear_buf = vim.api.nvim_create_buf(false, true)
 		-- add bufferline to home_buf
-		vim.api.nvim_buf_set_lines(M.clear_buf, 0, 0, true, { " 1:home  [2:clear]  3:update", "" })
+		vim.api.nvim_buf_set_lines(M.clear_buf, 0, 0, true, { " 1:home  [2:clear]", "" })
 		-- keymap to jump home_buf
 		vim.keymap.set("n", "1", function()
 			vim.api.nvim_win_set_buf(M.win, M.home_buf)
