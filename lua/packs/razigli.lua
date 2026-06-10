@@ -60,12 +60,8 @@ function M.parse_all_pkgs(data)
 	return lines
 end
 
-function M.update()
-	-- get all datas
-	local data = vim.pack.get()
-	-- get all pkgs
-	local lines = M.parse_all_pkgs(data)
-	-- get list of disables pkgs
+-- parse to_clear pkgs
+function M.parse_to_clear_pkgs(data)
 	local to_clear_lines = {}
 	local to_clear_count = 0
 	for _, pkg in ipairs(data) do
@@ -75,6 +71,16 @@ function M.update()
 			table.insert(to_clear_lines, "\tsrc = " .. pkg.spec.src)
 		end
 	end
+	return to_clear_lines, to_clear_count
+end
+
+function M.update()
+	-- get all datas
+	local data = vim.pack.get()
+	-- get all pkgs
+	local lines = M.parse_all_pkgs(data)
+	-- get list of disables pkgs
+	local to_clear_lines, to_clear_count = M.parse_to_clear_pkgs(data)
 	M.info = #data .. "([+]:" .. #data - to_clear_count .. ", [-]:" .. to_clear_count .. ")"
 	local winbar = vim.api.nvim_win_get_option(M.win, "winbar")
 	vim.api.nvim_win_set_option(M.win, "winbar", winbar .. " | " .. M.info)
