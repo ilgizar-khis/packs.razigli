@@ -79,7 +79,9 @@ function M.toggle_status()
 	if buf == M.clear_buf then
 		local number = M.get_prev_line(true)
 		local line = vim.api.nvim_buf_get_lines(M.clear_buf, number - 1, number, false)[1]
-		vim.notify(line .. " sdaf")
+		if string.find(line, "%[%-%]") then
+			line, _ = string.gsub(line, "%[%-%]", "[ ]")
+		end
 	end
 end
 
