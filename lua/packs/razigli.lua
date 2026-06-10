@@ -1,3 +1,4 @@
+-- main table
 local M = {
 	win = nil,
 	main_buf = nil,
@@ -11,14 +12,16 @@ local M = {
 	},
 }
 
+-- function to open/close win
 function M.toggle()
+	-- create main buffer
 	if not M.main_buf then
 		M.main_buf = vim.api.nvim_create_buf(false, true)
 	end
-
+	-- calculate col and row params
 	local col = math.floor((vim.api.nvim_get_option("columns") - M.params.width) / 2)
 	local row = math.floor((vim.api.nvim_get_option("lines") - M.params.height) / 2)
-
+	-- if win don't exist create new win
 	if not M.win or not vim.api.nvim_win_is_valid(M.win) then
 		M.win = vim.api.nvim_open_win(M.main_buf, true, {
 			relative = "editor",
@@ -29,11 +32,13 @@ function M.toggle()
 			border = M.params.border,
 		})
 	else
+		-- close and delete win
 		vim.api.nvim_close_win(M.win)
 		M.win = nil
 	end
 end
 
-function M.setup() end
+-- function to setup
+function M.setup(params) end
 
 return M
