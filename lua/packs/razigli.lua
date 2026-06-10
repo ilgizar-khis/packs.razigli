@@ -16,7 +16,8 @@ function M.update()
 	if M.home_buf then
 		local lines = {}
 		for _, pkg in ipairs(data) do
-			table.insert(lines, "active = " .. pkg.active)
+			local status = pkg.active and "[+]" or "[ ]"
+			table.insert(lines, status)
 			table.insert(lines, "name = " .. pkg.spec.name)
 			table.insert(lines, "src = " .. pkg.spec.src)
 			table.insert(lines, "path = " .. pkg.path)
