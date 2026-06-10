@@ -93,7 +93,7 @@ function M.update()
 	local lines = M.parse_all_pkgs(data)
 	-- get list of disables pkgs
 	local to_clear_lines, to_clear_count = M.parse_to_clear_pkgs(data)
-	M.info = #data .. "([+]:" .. #data - to_clear_count .. ", [-]:" .. to_clear_count .. ")"
+	M.info = "[" .. #data .. ", +" .. #data - to_clear_count .. ", -" .. to_clear_count .. "]"
 	M.winbar()
 	-- append data tp home_buf
 	if M.home_buf then
