@@ -128,34 +128,37 @@ function M.clear_buf_setup()
 	end
 end
 
+function M.win_setup()
+	-- calculate col and row params
+	local col = math.floor((vim.api.nvim_get_option("columns") - M.width) / 2)
+	local row = math.floor((vim.api.nvim_get_option("lines") - M.height) / 2)
+	M.win = vim.api.nvim_open_win(M.home_buf, true, {
+		relative = "editor",
+		width = M.width,
+		height = M.height,
+		col = col,
+		row = row,
+		border = M.border,
+	})
+	-- delet signcolumn and numberline
+	vim.api.nvim_win_set_option(M.win, "number", false)
+	vim.api.nvim_win_set_option(M.win, "relativenumber", false)
+	vim.api.nvim_win_set_option(M.win, "signcolumn", "no")
+	-- add bufferline to winbar
+	vim.api.nvim_win_set_option(M.win, "winbar", "[1:home]  2:clear ")
+	M.update()
+	-- goto start of list
+	vim.api.nvim_win_set_cursor(M.win, { 4, 3 })
+end
+
 -- function to open/close win
 function M.toggle()
 	-- create home buffer
 	M.home_buf_setup()
 	-- create clear buffer
 	M.clear_buf_setup()
-	-- calculate col and row params
-	local col = math.floor((vim.api.nvim_get_option("columns") - M.width) / 2)
-	local row = math.floor((vim.api.nvim_get_option("lines") - M.height) / 2)
 	-- if win don't exist create new win
 	if not M.win or not vim.api.nvim_win_is_valid(M.win) then
-		M.win = vim.api.nvim_open_win(M.home_buf, true, {
-			relative = "editor",
-			width = M.width,
-			height = M.height,
-			col = col,
-			row = row,
-			border = M.border,
-		})
-		-- delet signcolumn and numberline
-		vim.api.nvim_win_set_option(M.win, "number", false)
-		vim.api.nvim_win_set_option(M.win, "relativenumber", false)
-		vim.api.nvim_win_set_option(M.win, "signcolumn", "no")
-		-- add bufferline to winbar
-		vim.api.nvim_win_set_option(M.win, "winbar", "[1:home]  2:clear ")
-		M.update()
-		-- goto start of list
-		vim.api.nvim_win_set_cursor(M.win, { 4, 3 })
 	else
 		-- close and delete win
 		vim.api.nvim_win_close(M.win, true)
