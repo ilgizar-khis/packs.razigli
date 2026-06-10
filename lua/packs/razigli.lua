@@ -28,6 +28,9 @@ function M.toggle()
 			row = row,
 			border = M.border,
 		})
+	else
+		vim.api.nvim_close_win(M.win)
+		M.win = nil
 	end
 end
 
