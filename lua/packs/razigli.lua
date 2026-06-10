@@ -1,8 +1,13 @@
-local M = {}
+local M = {
+	win = nil,
+	clear_buf = nil,
+	list_buf = nil,
+	update_buf = nil,
+	params = {},
+}
 
-function M.setup()
-	vim.api.nvim_create_user_command("Packs", function()
-		vim.notify("TEST")
-	end, {})
-end
+function M.open() end
+
+function M.setup() end
+
 return M
