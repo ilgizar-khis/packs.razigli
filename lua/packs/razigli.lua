@@ -24,8 +24,11 @@ function M.to_next()
 	local lines = vim.api.nvim_buf_get_lines(buf, lineNr, -1, false)
 	-- iterate all lines
 	for i, line in ipairs(lines) do
+		-- if find line
 		if string.find(line, "^%[[%+%- ]%]") then
-			print(line .. ":" .. i)
+			-- jump to next name
+			vim.api.nvim_win_set_cursor(M.win, { lineNr + i, 3 })
+			return
 		end
 	end
 end
