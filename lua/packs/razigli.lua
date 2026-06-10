@@ -1,20 +1,19 @@
 -- main table
 local M = {
-	win = nil,
-	home_buf = nil,
-	clear_buf = nil,
-	update_buf = nil,
-	width = 160,
-	height = 40,
-	border = "single",
-	key_home_buf = "1",
-	key_clear_buf = "2",
-	key_toggle_status = "<Space>",
-	key_clear = "<CR>",
-	key_update = "<S-u>",
-	key_to_next = "<Tab>",
-	key_to_prev = "<S-Tab>",
-	info = nil,
+	win = nil, -- id of win
+	home_buf = nil, -- id of home_buf
+	clear_buf = nil, -- id of clear_buf
+	width = 160, -- width of win
+	height = 40, -- height of win
+	border = "single", -- border style of win
+	key_home_buf = "1", -- key "goto home_buf"
+	key_clear_buf = "2", -- key "goto clear_buf"
+	key_toggle_status = "<Space>", -- key "toggle status of prev pkg"
+	key_clear = "<CR>", -- key "start delete pkgs"
+	key_update = "<S-u>", -- key "update list of pkgs"
+	key_to_next = "<Tab>", -- key "goto next pkg"
+	key_to_prev = "<S-Tab>", -- key "goto prev pkg"
+	info = nil, -- info str
 }
 
 -- goto next pkg
