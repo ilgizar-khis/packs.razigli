@@ -39,6 +39,13 @@ function M.toggle()
 end
 
 -- function to setup
-function M.setup(params) end
+function M.setup(params)
+	-- set params
+	for key, value in pairs(params) do
+		if M.params[key] then
+			M.params[key] = value
+		end
+	end
+end
 
 return M
