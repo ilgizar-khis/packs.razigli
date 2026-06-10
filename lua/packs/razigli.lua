@@ -6,7 +6,15 @@ local M = {
 	params = {},
 }
 
-function M.open() end
+function M.open()
+	if not M.clear_buf then
+		M.clear_buf = vim.api.nvim_create_buf(false, true)
+	end
+
+	if not M.list_buf then
+		M.list_buf = vim.api.nvim_create_buf(false, true)
+	end
+end
 
 function M.setup() end
 
