@@ -11,6 +11,17 @@ local M = {
 	},
 }
 
+function M.update()
+	local data = vim.pack.get()
+	if M.home_buf then
+		local lines = {}
+		for _, pkg in ipairs(data) do
+			table.insert(lines, "name = " .. pkg.spec.name)
+		end
+		vim.api.nvim_buf_set_lines(M.home_buf, 1, -1, true, lines)
+	end
+end
+
 -- function to open/close win
 function M.toggle()
 	-- create main buffer
