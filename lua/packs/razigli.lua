@@ -22,7 +22,12 @@ function M.to_next()
 	local lineNr = vim.api.nvim_win_get_cursor(M.win)[1]
 	local buf = vim.api.nvim_win_get_buf(M.win)
 	local lines = vim.api.nvim_buf_get_lines(buf, lineNr, -1, false)
-	vim.notify("lines count: " .. #lines)
+	-- iterate all lines
+	for i, line in ipairs(lines) do
+		if string.find(line, "^%[[%+%- ]%]") then
+			print(line .. ":" .. i)
+		end
+	end
 end
 
 function M.clear()
