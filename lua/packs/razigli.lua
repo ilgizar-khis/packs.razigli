@@ -230,11 +230,8 @@ function M.win_setup()
 	vim.api.nvim_win_set_option(M.win, "number", false)
 	vim.api.nvim_win_set_option(M.win, "relativenumber", false)
 	vim.api.nvim_win_set_option(M.win, "signcolumn", "no")
-	-- add bufferline to winbar
-	vim.api.nvim_win_set_option(M.win, "winbar", "[1:home]  2:clear ")
+	-- preupdate
 	M.update()
-	-- goto start of list
-	vim.api.nvim_win_set_cursor(M.win, { 4, 3 })
 end
 
 -- function to open/close win
