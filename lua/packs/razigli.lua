@@ -31,6 +31,10 @@ function M.toggle()
 			row = row,
 			border = M.params.border,
 		})
+		-- delet signcolumn and numberline
+		vim.api.nvim_win_set_option(M.win, "number", false)
+		vim.api.nvim_win_set_option(M.win, "relativenumber", false)
+		vim.api.nvim_win_set_option(M.win, "signcolumn", "no")
 	else
 		-- close and delete win
 		vim.api.nvim_close_win(M.win)
