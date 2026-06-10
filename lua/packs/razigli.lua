@@ -32,12 +32,20 @@ function M.toggle()
 		M.home_buf = vim.api.nvim_create_buf(false, true)
 		-- add bufferline to home_buf
 		vim.api.nvim_buf_set_lines(M.home_buf, 0, 0, true, { "[1:home]  2:clear   3:update", "" })
+		-- keymap to jump clear_buf
+		vim.keymap.set("n", "2", function()
+			vim.api.nvim_win_set_buf(M.win, M.clear_buf)
+		end, { buffer = M.home_buf })
 	end
 	-- create clear buffer
 	if not M.clear_buf then
 		M.clear_buf = vim.api.nvim_create_buf(false, true)
 		-- add bufferline to home_buf
 		vim.api.nvim_buf_set_lines(M.clear_buf, 0, 0, true, { " 1:home  [2:clear]  3:update", "" })
+		-- keymap to jump home_buf
+		vim.keymap.set("n", "1", function()
+			vim.api.nvim_win_set_buf(M.win, M.home_buf)
+		end, { buffer = M.clear_buf })
 	end
 	-- calculate col and row params
 	local col = math.floor((vim.api.nvim_get_option("columns") - M.params.width) / 2)
