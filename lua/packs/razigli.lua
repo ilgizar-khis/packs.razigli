@@ -53,7 +53,9 @@ function M.to_prev()
 		end
 	end
 	-- jump to start
-	vim.api.nvim_win_set_cursor(M.win, { 1, 3 })
+	local last_line = vim.api.nvim_buf_line_count(buf)
+	vim.api.nvim_win_set_cursor(M.win, { last_line, 3 })
+	M.to_prev()
 end
 
 function M.clear()
