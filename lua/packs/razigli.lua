@@ -121,12 +121,16 @@ end
 
 -- get all pkgs
 function M.parse_all_pkgs(data)
+	-- create basic vars
 	local lines = {}
+	-- iterate data
 	for _, pkg in ipairs(data) do
+		-- append list and increment count
 		local status = pkg.active and "[+]" or "[-]"
 		table.insert(lines, status .. " name = " .. pkg.spec.name)
 		table.insert(lines, "\tsrc = " .. pkg.spec.src)
 	end
+	-- return list of lines
 	return lines
 end
 
