@@ -16,8 +16,15 @@ local M = {
 }
 
 function M.clear()
+	-- get lines from clear_buf
 	local lines = vim.api.nvim_buf_get_lines(M.clear_buf, 2, -1, false)
-	vim.notify(lines[1])
+	local to_clear = {}
+	-- delete all pkgs
+	for _, line in ipairs(lines) do
+		if string.find(line, "^%[%-%]") then
+			vim.notify(line)
+		end
+	end
 end
 
 function M.update()
