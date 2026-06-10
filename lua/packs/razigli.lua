@@ -11,6 +11,8 @@ local M = {
 	key_clear_buf = "2",
 	key_clear = "<CR>",
 	key_update = "<S-u>",
+	key_to_next = "<Tab>",
+	key_to_prev = "<S-Tab>",
 	info = nil,
 }
 
