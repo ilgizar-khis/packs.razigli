@@ -22,9 +22,10 @@ function M.clear()
 	-- delete all pkgs
 	for _, line in ipairs(lines) do
 		if string.find(line, "^%[%-%]") then
-			vim.notify(line)
+			table.insert(to_clear, string.match(line, "^%[%-%] (.+)"))
 		end
 	end
+	vim.notify(to_clear[1])
 end
 
 function M.update()
