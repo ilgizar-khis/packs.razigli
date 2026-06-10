@@ -81,6 +81,8 @@ function M.toggle_status()
 		local line = vim.api.nvim_buf_get_lines(M.clear_buf, number - 1, number, false)[1]
 		if string.find(line, "%[%-%]") then
 			line, _ = string.gsub(line, "%[%-%]", "[ ]")
+		elseif string.find(line, "%[ %]") then
+			line, _ = string.gsub(line, "%[ %]", "[-]")
 		end
 		vim.api.nvim_buf_set_lines(M.clear_buf, number - 1, number, false, { line })
 	end
