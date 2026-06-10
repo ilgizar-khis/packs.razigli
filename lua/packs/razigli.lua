@@ -49,6 +49,18 @@ function M.clear()
 	M.update()
 end
 
+function M.winbar()
+	local buf = vim.api.nvim_win_get_buf(M.win)
+	local winbar = ""
+	if buf == M.home_buf then
+		winbar = "[1:home]  2:clear "
+	else
+		winbar = " 1:home  [2:clear]"
+	end
+	winbar = winbar .. " | " .. M.info
+	vim.api.nvim_win_set_option(M.win, "winbar", winbar)
+end
+
 -- get all pkgs
 function M.parse_all_pkgs(data)
 	local lines = {}
