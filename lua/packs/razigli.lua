@@ -25,7 +25,8 @@ function M.clear()
 			table.insert(to_clear, string.match(line, "^%[%-%] (.+)"))
 		end
 	end
-	vim.notify(to_clear[1])
+	vim.pack.del(to_clear)
+	M.update()
 end
 
 function M.update()
