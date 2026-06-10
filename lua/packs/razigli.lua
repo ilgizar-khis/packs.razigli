@@ -102,15 +102,20 @@ function M.clear()
 	M.update()
 end
 
+-- function to set winbar
 function M.winbar()
+	-- get current buffer
 	local buf = vim.api.nvim_win_get_buf(M.win)
 	local winbar = ""
+	-- check buffer and set bufferline text
 	if buf == M.home_buf then
 		winbar = "[1:home]  2:clear "
 	else
 		winbar = " 1:home  [2:clear]"
 	end
+	-- add info
 	winbar = winbar .. " | " .. M.info
+	-- set options
 	vim.api.nvim_win_set_option(M.win, "winbar", winbar)
 end
 
