@@ -86,8 +86,6 @@ end
 function M.home_buf_setup()
 	if not M.home_buf then
 		M.home_buf = vim.api.nvim_create_buf(false, true)
-		-- add bufferline to home_buf
-		-- vim.api.nvim_buf_set_lines(M.home_buf, 0, 0, true, { , "" })
 		-- keymap to jump clear_buf
 		vim.keymap.set("n", M.key_clear_buf, function()
 			vim.api.nvim_win_set_buf(M.win, M.clear_buf)
