@@ -32,6 +32,14 @@ end
 function M.update()
 	-- get all datas
 	local data = vim.pack.get()
+	-- get list of disables pkgs
+	local to_clear = {}
+	for _, pkg in ipairs(data) do
+		if not pkg.active then
+			table.insert(to_clear, "[-] name = " .. pkg.spec.name)
+			table.insert(to_clear, "\tsrc = " .. pkg.spec.src)
+		end
+	end
 	-- append data tp home_buf
 	if M.home_buf then
 		local lines = {}
@@ -44,14 +52,7 @@ function M.update()
 	end
 	-- append data tp clear_buf
 	if M.clear_buf then
-		local lines = {}
-		for _, pkg in ipairs(data) do
-			if not pkg.active then
-				table.insert(lines, "[-] name = " .. pkg.spec.name)
-				table.insert(lines, "\tsrc = " .. pkg.spec.src)
-			end
-		end
-		vim.api.nvim_buf_set_lines(M.clear_buf, 2, -1, true, lines)
+		vim.api.nvim_buf_set_lines(M.clear_buf, 2, -1, true, to_clear)
 	end
 end
 
