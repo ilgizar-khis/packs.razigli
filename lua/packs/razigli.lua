@@ -48,13 +48,15 @@ function M.update()
 		end
 	end
 	local info = "total:" .. #data .. "([+]:" .. #data - to_clear_count .. ", [-]:" .. to_clear_count .. ")"
+	table.insert(lines, 1, info)
+	table.insert(to_clear_lines, 1, info)
 	-- append data tp home_buf
 	if M.home_buf then
-		vim.api.nvim_buf_set_lines(M.home_buf, 1, -1, true, lines)
+		vim.api.nvim_buf_set_lines(M.home_buf, 0, -1, true, lines)
 	end
 	-- append data tp clear_buf
 	if M.clear_buf then
-		vim.api.nvim_buf_set_lines(M.clear_buf, 2, -1, true, to_clear_lines)
+		vim.api.nvim_buf_set_lines(M.clear_buf, 0, -1, true, to_clear_lines)
 	end
 end
 
