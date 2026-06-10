@@ -61,6 +61,10 @@ function M.toggle()
 		vim.keymap.set("n", "1", function()
 			vim.api.nvim_win_set_buf(M.win, M.home_buf)
 		end, { buffer = M.clear_buf })
+		-- keymap to clear
+		vim.keymap.set("n", "<CR>", function()
+			M.clear()
+		end, { buffer = M.clear_buf })
 	end
 	-- calculate col and row params
 	local col = math.floor((vim.api.nvim_get_option("columns") - M.params.width) / 2)
