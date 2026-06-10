@@ -47,6 +47,7 @@ function M.toggle()
 		vim.api.nvim_win_set_option(M.win, "number", false)
 		vim.api.nvim_win_set_option(M.win, "relativenumber", false)
 		vim.api.nvim_win_set_option(M.win, "signcolumn", "no")
+		M.update()
 	else
 		-- close and delete win
 		vim.api.nvim_win_close(M.win, true)
