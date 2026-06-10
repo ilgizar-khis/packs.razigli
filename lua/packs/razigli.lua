@@ -114,6 +114,8 @@ function M.toggle()
 		vim.api.nvim_win_set_option(M.win, "relativenumber", false)
 		vim.api.nvim_win_set_option(M.win, "signcolumn", "no")
 		M.update()
+		-- goto start of list
+		vim.api.nvim_win_set_cursor(M.win, { 4, 3 })
 	else
 		-- close and delete win
 		vim.api.nvim_win_close(M.win, true)
