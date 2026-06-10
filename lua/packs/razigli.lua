@@ -204,7 +204,7 @@ function M.win_setup()
 end
 
 -- function to open/close win
-function M.toggle()
+function M.toggle_win()
 	-- create home buffer
 	M.home_buf_setup()
 	-- create clear buffer
