@@ -1,7 +1,7 @@
 -- main table
 local M = {
 	win = nil,
-	main_buf = nil,
+	home_buf = nil,
 	clear_buf = nil,
 	list_buf = nil,
 	update_buf = nil,
@@ -15,17 +15,17 @@ local M = {
 -- function to open/close win
 function M.toggle()
 	-- create main buffer
-	if not M.main_buf then
-		M.main_buf = vim.api.nvim_create_buf(false, true)
+	if not M.home_buf then
+		M.home_buf = vim.api.nvim_create_buf(false, true)
 	end
-	-- add bufferline to main_buf
-	vim.api.nvim_buf_set_lines(M.main_buf, 0, 0, false, { "[home]  clear  list" })
+	-- add bufferline to home_buf
+	vim.api.nvim_buf_set_lines(M.home_buf, 0, 0, false, { "[home]  clear  list" })
 	-- calculate col and row params
 	local col = math.floor((vim.api.nvim_get_option("columns") - M.params.width) / 2)
 	local row = math.floor((vim.api.nvim_get_option("lines") - M.params.height) / 2)
 	-- if win don't exist create new win
 	if not M.win or not vim.api.nvim_win_is_valid(M.win) then
-		M.win = vim.api.nvim_open_win(M.main_buf, true, {
+		M.win = vim.api.nvim_open_win(M.home_buf, true, {
 			relative = "editor",
 			width = M.params.width,
 			height = M.params.height,
