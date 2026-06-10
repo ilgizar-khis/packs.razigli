@@ -76,7 +76,11 @@ end
 function M.toggle_status()
 	local lineNr = vim.api.nvim_win_get_cursor(M.win)[1]
 	local buf = vim.api.nvim_win_get_buf(M.win)
-	local lines = vim.api.nvim_buf_get_lines(buf, 0, lineNr, false)
+	if buf == M.clear_buf then
+		local number = M.get_prev_line(true)
+		local line = vim.api.nvim_buf_get_lines(M.clear_buf, number, number, false)
+		vim.notify(line)
+	end
 end
 
 function M.clear()
