@@ -21,7 +21,9 @@ function M.clear()
 end
 
 function M.update()
+	-- get all datas
 	local data = vim.pack.get()
+	-- append data tp home_buf
 	if M.home_buf then
 		local lines = {}
 		for _, pkg in ipairs(data) do
@@ -31,7 +33,7 @@ function M.update()
 		end
 		vim.api.nvim_buf_set_lines(M.home_buf, 2, -1, true, lines)
 	end
-
+	-- append data tp clear_buf
 	if M.clear_buf then
 		local lines = {}
 		for _, pkg in ipairs(data) do
