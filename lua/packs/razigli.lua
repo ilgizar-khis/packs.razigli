@@ -68,6 +68,7 @@ end
 -- goto prev pkg
 function M.to_prev()
 	local number = M.get_prev_line()
+	-- if number is exist goto number line
 	if number then
 		vim.api.nvim_win_set_cursor(M.win, { number, 3 })
 	end
