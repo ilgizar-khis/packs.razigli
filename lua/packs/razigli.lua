@@ -18,6 +18,8 @@ function M.toggle()
 	if not M.main_buf then
 		M.main_buf = vim.api.nvim_create_buf(false, true)
 	end
+	-- add bufferline to main_buf
+	vim.api.nvim_buf_set_lines(M.main_buf, 0, 0, false, { "[home]  clear  list" })
 	-- calculate col and row params
 	local col = math.floor((vim.api.nvim_get_option("columns") - M.params.width) / 2)
 	local row = math.floor((vim.api.nvim_get_option("lines") - M.params.height) / 2)
