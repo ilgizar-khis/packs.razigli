@@ -62,14 +62,10 @@ end
 
 -- goto prev pkg
 function M.to_prev()
-	-- get datas
-	local lineNr = vim.api.nvim_win_get_cursor(M.win)[1]
-	local buf = vim.api.nvim_win_get_buf(M.win)
-	local lines = vim.api.nvim_buf_get_lines(buf, 0, lineNr, false)
-	-- jump to start
-	local last_line = vim.api.nvim_buf_line_count(buf)
-	vim.api.nvim_win_set_cursor(M.win, { last_line, 3 })
-	M.to_prev()
+	local number = M.get_prev_line()
+	if number then
+		vim.api.nvim_win_set_cursor(M.win, { number, 3 })
+	end
 end
 
 -- toggle status of pkg
