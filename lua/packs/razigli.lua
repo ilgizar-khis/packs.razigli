@@ -3,7 +3,6 @@ local M = {
 	win = nil,
 	home_buf = nil,
 	clear_buf = nil,
-	list_buf = nil,
 	update_buf = nil,
 	params = {
 		width = 160,
@@ -18,7 +17,7 @@ function M.toggle()
 	if not M.home_buf then
 		M.home_buf = vim.api.nvim_create_buf(false, true)
 		-- add bufferline to home_buf
-		vim.api.nvim_buf_set_lines(M.home_buf, 0, 0, true, { "[home]  clear  list" })
+		vim.api.nvim_buf_set_lines(M.home_buf, 0, 0, true, { "[1:home]  2:clear  3:update" })
 	end
 	-- calculate col and row params
 	local col = math.floor((vim.api.nvim_get_option("columns") - M.params.width) / 2)
