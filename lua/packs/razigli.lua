@@ -85,6 +85,10 @@ function M.toggle()
 		vim.keymap.set("n", M.key_update, function()
 			M.update()
 		end, { buffer = M.home_buf })
+		-- goto next
+		vim.keymap.set("n", "<Tab>", function()
+			M.to_next()
+		end, { buffer = M.home_buf })
 	end
 	-- create clear buffer
 	if not M.clear_buf then
