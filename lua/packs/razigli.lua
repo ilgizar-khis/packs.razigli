@@ -8,6 +8,12 @@ local M = {
 		width = 160,
 		height = 40,
 		border = "single",
+		keymap = {
+			home_buf = "1",
+			clear_buf = "2",
+			clear = "<CR>",
+			update = "<S-u>",
+		},
 	},
 }
 
