@@ -166,6 +166,9 @@ function M.clear_buf_setup()
 		vim.keymap.set("n", M.key_to_next, function()
 			M.to_next()
 		end, { buffer = M.clear_buf })
+		vim.keymap.set("n", M.key_to_prev, function()
+			M.to_prev()
+		end, { buffer = M.clear_buf })
 	end
 end
 
