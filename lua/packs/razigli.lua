@@ -58,6 +58,13 @@ function M.to_prev()
 	M.to_prev()
 end
 
+-- toggle status of pkg
+function M.toggle_status()
+	local lineNr = vim.api.nvim_win_get_cursor(M.win)[1]
+	local buf = vim.api.nvim_win_get_buf(M.win)
+	local lines = vim.api.nvim_buf_get_lines(buf, 0, lineNr, false)
+end
+
 function M.clear()
 	-- get lines from clear_buf
 	local lines = vim.api.nvim_buf_get_lines(M.clear_buf, 2, -1, false)
