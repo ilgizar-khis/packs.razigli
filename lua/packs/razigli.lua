@@ -104,10 +104,8 @@ function M.home_buf_setup()
 	end
 end
 
--- function to open/close win
-function M.toggle()
-	-- create home buffer
-	-- create clear buffer
+-- clear_buf_setup function
+function M.clear_buf_setup()
 	if not M.clear_buf then
 		M.clear_buf = vim.api.nvim_create_buf(false, true)
 		-- keymap to jump home_buf
@@ -128,6 +126,12 @@ function M.toggle()
 			M.to_next()
 		end, { buffer = M.clear_buf })
 	end
+end
+
+-- function to open/close win
+function M.toggle()
+	-- create home buffer
+	-- create clear buffer
 	-- calculate col and row params
 	local col = math.floor((vim.api.nvim_get_option("columns") - M.width) / 2)
 	local row = math.floor((vim.api.nvim_get_option("lines") - M.height) / 2)
