@@ -18,7 +18,7 @@ function M.update()
 		for _, pkg in ipairs(data) do
 			table.insert(lines, "name = " .. pkg.spec.name)
 		end
-		vim.api.nvim_buf_set_lines(M.home_buf, 1, -1, true, lines)
+		vim.api.nvim_buf_set_lines(M.home_buf, -1, -1, true, lines)
 	end
 end
 
