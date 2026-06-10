@@ -36,12 +36,16 @@ function M.to_next()
 end
 
 -- get prev pkg_name line number
-function M.get_prev_line()
+function M.get_prev_line(inc_cur) -- inc_cur = include current line?
 	local lineNr = vim.api.nvim_win_get_cursor(M.win)[1]
 	local buf = vim.api.nvim_win_get_buf(M.win)
 	local lines = vim.api.nvim_buf_get_lines(buf, 0, lineNr, false)
 	-- iterate all lines
-	for i = #lines - 1, 1, -1 do
+	local start = #lines
+	if not inc_cur then
+		start = start - 1
+	end
+	for i = start, 1, -1 do
 		local line = lines[i]
 		-- if find line
 		if string.find(line, "^%[[%+%- ]%]") then
