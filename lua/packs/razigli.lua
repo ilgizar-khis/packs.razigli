@@ -84,7 +84,7 @@ end
 
 -- home_buf setup function
 function M.home_buf_setup()
-	if not M.home_buf then
+	if not M.home_buf or not vim.api.nvim_buf_is_valid(M.clear_buf) then
 		M.home_buf = vim.api.nvim_create_buf(false, true)
 		-- keymap to jump clear_buf
 		vim.keymap.set("n", M.key_clear_buf, function()
@@ -104,7 +104,7 @@ end
 
 -- clear_buf_setup function
 function M.clear_buf_setup()
-	if not M.clear_buf then
+	if not M.clear_buf or not vim.api.nvim_buf_is_valid(M.clear_buf) then
 		M.clear_buf = vim.api.nvim_create_buf(false, true)
 		-- keymap to jump home_buf
 		vim.keymap.set("n", M.key_home_buf, function()
