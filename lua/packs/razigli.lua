@@ -89,7 +89,7 @@ function M.toggle()
 			M.update()
 		end, { buffer = M.home_buf })
 		-- goto next
-		vim.keymap.set("n", "<Tab>", function()
+		vim.keymap.set("n", M.key_to_next, function()
 			M.to_next()
 		end, { buffer = M.home_buf })
 	end
@@ -110,7 +110,7 @@ function M.toggle()
 			M.update()
 		end, { buffer = M.clear_buf })
 		-- goto next
-		vim.keymap.set("n", "<Tab>", function()
+		vim.keymap.set("n", M.key_to_next, function()
 			M.to_next()
 		end, { buffer = M.clear_buf })
 	end
