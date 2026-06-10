@@ -31,6 +31,8 @@ function M.to_next()
 			return
 		end
 	end
+	-- jump to start
+	vim.api.nvim_win_set_cursor(M.win, { 1, 3 })
 end
 
 function M.clear()
