@@ -203,6 +203,10 @@ function M.clear_buf_setup()
 		vim.keymap.set("n", M.key_to_prev, function()
 			M.to_prev()
 		end, { buffer = M.clear_buf })
+		-- toggle status
+		vim.keymap.set("n", M.key_toggle_status, function()
+			M.toggle_status()
+		end, { buffer = M.clear_buf })
 	end
 end
 
