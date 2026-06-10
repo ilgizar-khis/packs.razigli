@@ -52,8 +52,12 @@ function M.toggle()
 		-- add bufferline to home_buf
 		vim.api.nvim_buf_set_lines(M.home_buf, 0, 0, true, { "[1:home]  2:clear", "" })
 		-- keymap to jump clear_buf
-		vim.keymap.set("n", "2", function()
+		vim.keymap.set("n", M.keymap.clear_buf, function()
 			vim.api.nvim_win_set_buf(M.win, M.clear_buf)
+		end, { buffer = M.home_buf })
+		-- update data
+		vim.keymap.set("n", M.keymap.update, function()
+			M.update()
 		end, { buffer = M.home_buf })
 	end
 	-- create clear buffer
@@ -62,12 +66,16 @@ function M.toggle()
 		-- add bufferline to home_buf
 		vim.api.nvim_buf_set_lines(M.clear_buf, 0, 0, true, { " 1:home  [2:clear]", "" })
 		-- keymap to jump home_buf
-		vim.keymap.set("n", "1", function()
+		vim.keymap.set("n", M.keymap.home_buf, function()
 			vim.api.nvim_win_set_buf(M.win, M.home_buf)
 		end, { buffer = M.clear_buf })
 		-- keymap to clear
-		vim.keymap.set("n", "<CR>", function()
+		vim.keymap.set("n", M.keymap.clear, function()
 			M.clear()
+		end, { buffer = M.clear_buf })
+		-- keymap to update
+		vim.keymap.set("n", M.keymap.update, function()
+			M.update()
 		end, { buffer = M.clear_buf })
 	end
 	-- calculate col and row params
