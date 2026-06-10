@@ -48,6 +48,7 @@ function M.to_prev()
 		if string.find(line, "^%[[%+%- ]%]") then
 			-- jump to next name
 			vim.api.nvim_win_set_cursor(M.win, { i, 3 })
+			print("line: " .. i)
 			return
 		end
 	end
