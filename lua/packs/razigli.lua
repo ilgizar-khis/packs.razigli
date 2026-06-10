@@ -1,5 +1,6 @@
 local M = {
 	win = nil,
+	main_buf = nil,
 	clear_buf = nil,
 	list_buf = nil,
 	update_buf = nil,
@@ -7,6 +8,10 @@ local M = {
 }
 
 function M.open()
+	if not M.main_buf then
+		M.main_buf = vim.api.nvim_create_buf(false, true)
+	end
+
 	if not M.clear_buf then
 		M.clear_buf = vim.api.nvim_create_buf(false, true)
 	end
