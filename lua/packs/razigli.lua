@@ -94,8 +94,7 @@ function M.update()
 	-- get list of disables pkgs
 	local to_clear_lines, to_clear_count = M.parse_to_clear_pkgs(data)
 	M.info = #data .. "([+]:" .. #data - to_clear_count .. ", [-]:" .. to_clear_count .. ")"
-	local winbar = vim.api.nvim_win_get_option(M.win, "winbar")
-	vim.api.nvim_win_set_option(M.win, "winbar", winbar .. " | " .. M.info)
+	M.winbar()
 	-- append data tp home_buf
 	if M.home_buf then
 		vim.api.nvim_buf_set_lines(M.home_buf, 0, -1, true, lines)
