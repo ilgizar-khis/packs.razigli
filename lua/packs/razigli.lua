@@ -16,17 +16,17 @@ function M.toggle()
 		M.main_buf = vim.api.nvim_create_buf(false, true)
 	end
 
-	local col = math.floor((vim.api.nvim_get_option("columns") - M.width) / 2)
-	local row = math.floor((vim.api.nvim_get_option("lines") - M.height) / 2)
+	local col = math.floor((vim.api.nvim_get_option("columns") - M.params.width) / 2)
+	local row = math.floor((vim.api.nvim_get_option("lines") - M.params.height) / 2)
 
 	if not M.win or not vim.api.nvim_win_is_valid(M.win) then
 		M.win = vim.api.nvim_open_win(M.main_buf, true, {
 			relative = "editor",
-			width = M.width,
-			height = M.height,
+			width = M.params.width,
+			height = M.params.height,
 			col = col,
 			row = row,
-			border = M.border,
+			border = M.params.border,
 		})
 	else
 		vim.api.nvim_close_win(M.win)
