@@ -16,6 +16,7 @@ local M = {
 
 -- goto next pkg
 function M.to_next()
+	-- get datas
 	local lineNr = vim.api.nvim_win_get_cursor(M.win)[1]
 	local buf = vim.api.nvim_win_get_buf(M.win)
 	local lines = vim.api.nvim_buf_get_lines(buf, lineNr, -1, false)
