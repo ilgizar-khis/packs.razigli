@@ -21,7 +21,7 @@ function M.update()
 			table.insert(lines, "\tsrc = " .. pkg.spec.src)
 			table.insert(lines, "\tpath = " .. pkg.path)
 		end
-		vim.api.nvim_buf_set_lines(M.home_buf, -1, -1, true, lines)
+		vim.api.nvim_buf_set_lines(M.home_buf, 2, -1, true, lines)
 	end
 end
 
