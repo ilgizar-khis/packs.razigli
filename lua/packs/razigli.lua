@@ -42,7 +42,7 @@ function M.to_prev()
 	local buf = vim.api.nvim_win_get_buf(M.win)
 	local lines = vim.api.nvim_buf_get_lines(buf, 0, lineNr, false)
 	-- iterate all lines
-	for i in #lines, 1, -1 do
+	for i = #lines, 1, -1 do
 		local line = lines[i]
 		-- if find line
 		if string.find(line, "^%[[%+%- ]%]") then
