@@ -12,7 +12,7 @@ local M = {
 }
 
 function M.clear()
-	local lines = vim.api.nvim_buf_get_line(M.clear_buf, 2, -1)
+	local lines = vim.api.nvim_buf_get_lines(M.clear_buf, 2, -1, false)
 	vim.notify(lines[1])
 end
 
