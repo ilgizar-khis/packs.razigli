@@ -88,6 +88,7 @@ function M.toggle_status()
 	end
 end
 
+-- function to clear pkgs
 function M.clear()
 	-- get lines from clear_buf
 	local lines = vim.api.nvim_buf_get_lines(M.clear_buf, 2, -1, false)
@@ -98,7 +99,9 @@ function M.clear()
 			table.insert(to_clear, string.match(line, "^%[%-%] name = (.+)"))
 		end
 	end
+	-- delete pkgs
 	vim.pack.del(to_clear)
+	-- update lists
 	M.update()
 end
 
