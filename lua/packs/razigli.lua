@@ -16,7 +16,10 @@ function M.update()
 	if M.home_buf then
 		local lines = {}
 		for _, pkg in ipairs(data) do
+			table.insert(lines, "active = " .. pkg.active)
 			table.insert(lines, "name = " .. pkg.spec.name)
+			table.insert(lines, "src = " .. pkg.spec.src)
+			table.insert(lines, "path = " .. pkg.path)
 		end
 		vim.api.nvim_buf_set_lines(M.home_buf, -1, -1, true, lines)
 	end
