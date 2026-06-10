@@ -131,7 +131,9 @@ end
 -- function to open/close win
 function M.toggle()
 	-- create home buffer
+	M.home_buf_setup()
 	-- create clear buffer
+	M.clear_buf_setup()
 	-- calculate col and row params
 	local col = math.floor((vim.api.nvim_get_option("columns") - M.width) / 2)
 	local row = math.floor((vim.api.nvim_get_option("lines") - M.height) / 2)
