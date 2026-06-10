@@ -139,6 +139,7 @@ function M.parse_to_clear_pkgs(data)
 	return to_clear_lines, to_clear_count
 end
 
+-- function to update lists of pkgs
 function M.update()
 	-- get all datas
 	local data = vim.pack.get()
