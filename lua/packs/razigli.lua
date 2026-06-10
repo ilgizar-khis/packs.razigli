@@ -127,15 +127,20 @@ end
 
 -- parse to_clear pkgs
 function M.parse_to_clear_pkgs(data)
+	-- create basic vars
 	local to_clear_lines = {}
 	local to_clear_count = 0
+	-- iterate data
 	for _, pkg in ipairs(data) do
+		-- check to pkg is disabled
 		if not pkg.active then
+			-- append list and increment count
 			to_clear_count = to_clear_count + 1
 			table.insert(to_clear_lines, "[-] name = " .. pkg.spec.name)
 			table.insert(to_clear_lines, "\tsrc = " .. pkg.spec.src)
 		end
 	end
+	-- return list and count
 	return to_clear_lines, to_clear_count
 end
 
