@@ -39,7 +39,7 @@ function M.toggle()
 		vim.api.nvim_win_set_option(M.win, "signcolumn", "no")
 	else
 		-- close and delete win
-		vim.api.nvim_close_win(M.win)
+		vim.api.nvim_win_close(M.win, true)
 		M.win = nil
 	end
 end
