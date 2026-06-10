@@ -14,6 +14,14 @@ local M = {
 	info = nil,
 }
 
+-- goto next pkg
+function M.to_next()
+	local lineNr = vim.api.nvim_win_set_cursor(M.win)[1]
+	local buf = vim.api.nvim_win_get_buf(M.win)
+	local lines = vim.api.nvim_buf_get_lines(buf, lineNr, -1, false)
+	vim.notify("lines count: " .. #lines)
+end
+
 function M.clear()
 	-- get lines from clear_buf
 	local lines = vim.api.nvim_buf_get_lines(M.clear_buf, 2, -1, false)
