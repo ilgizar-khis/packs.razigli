@@ -92,7 +92,7 @@ function M.toggle()
 		-- keymap to jump clear_buf
 		vim.keymap.set("n", M.key_clear_buf, function()
 			vim.api.nvim_win_set_buf(M.win, M.clear_buf)
-			vim.api.nvim_win_set_option(M.win, "winbar", " 1:home   [2:clear]" .. " | " .. M.info)
+			vim.api.nvim_win_set_option(M.win, "winbar", " 1:home  [2:clear]" .. " | " .. M.info)
 		end, { buffer = M.home_buf })
 		-- update data
 		vim.keymap.set("n", M.key_update, function()
@@ -109,7 +109,7 @@ function M.toggle()
 		-- keymap to jump home_buf
 		vim.keymap.set("n", M.key_home_buf, function()
 			vim.api.nvim_win_set_buf(M.win, M.home_buf)
-			vim.api.nvim_win_set_option(M.win, "winbar", "[1:home]  2:clear" .. " | " .. M.info)
+			vim.api.nvim_win_set_option(M.win, "winbar", "[1:home]  2:clear " .. " | " .. M.info)
 		end, { buffer = M.clear_buf })
 		-- keymap to clear
 		vim.keymap.set("n", M.key_clear, function()
@@ -142,7 +142,7 @@ function M.toggle()
 		vim.api.nvim_win_set_option(M.win, "relativenumber", false)
 		vim.api.nvim_win_set_option(M.win, "signcolumn", "no")
 		-- add bufferline to winbar
-		vim.api.nvim_win_set_option(M.win, "winbar", "[1:home]  2:clear")
+		vim.api.nvim_win_set_option(M.win, "winbar", "[1:home]  2:clear ")
 		M.update()
 		-- goto start of list
 		vim.api.nvim_win_set_cursor(M.win, { 4, 3 })
