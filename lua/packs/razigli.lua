@@ -82,9 +82,8 @@ function M.update()
 	end
 end
 
--- function to open/close win
-function M.toggle()
-	-- create home buffer
+-- home_buf setup function
+function M.home_buf_setup()
 	if not M.home_buf then
 		M.home_buf = vim.api.nvim_create_buf(false, true)
 		-- add bufferline to home_buf
@@ -103,6 +102,11 @@ function M.toggle()
 			M.to_next()
 		end, { buffer = M.home_buf })
 	end
+end
+
+-- function to open/close win
+function M.toggle()
+	-- create home buffer
 	-- create clear buffer
 	if not M.clear_buf then
 		M.clear_buf = vim.api.nvim_create_buf(false, true)
