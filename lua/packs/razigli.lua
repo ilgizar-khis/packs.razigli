@@ -251,8 +251,8 @@ function M.clear_buf_setup()
 end
 
 local function as_table(name, value, desc)
-	local w = 40
-	if M.width < 120 then
+	local w = 20
+	if M.width < w * 3 then
 		w = M.width / 3
 	end
 	local line = ""
