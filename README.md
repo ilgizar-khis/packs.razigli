@@ -39,3 +39,22 @@
 |home_buf | nil | id of home_buf, if nil => buf is not exists|
 |clear_buf | nil | id of clear_buf, if nil => buf is not exists|
 
+## usage example: vim.pack
+
+```lua
+vim.pack.add({
+	{
+		src = "https://github.com/ilgizar-khis/packs.razigli.git",
+		version = "main",
+	},
+})
+
+local packs = require("packs.razigli")
+packs.setup({
+    width = 130,
+})
+
+vim.api.nvim_create_user_command("Packs", function()
+	packs.toggle_win()
+end, {})
+```
