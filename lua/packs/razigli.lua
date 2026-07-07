@@ -95,7 +95,7 @@ end
 -- function to clear pkgs
 function M.clear()
 	-- get lines from clear_buf
-	local lines = vim.api.nvim_buf_get_lines(M.clear_buf, 2, -1, false)
+	local lines = vim.api.nvim_buf_get_lines(M.clear_buf, 0, -1, false)
 	local to_clear = {}
 	-- delete all pkgs
 	for _, line in ipairs(lines) do
