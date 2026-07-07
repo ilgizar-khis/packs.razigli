@@ -284,7 +284,7 @@ function M.info_buf_setup()
 		table.insert(lines, "VARS")
 		-- win id
 		table.insert(lines, string.rep("-", M.width))
-		line = "win = " .. M.win .. " -- id of win"
+		line = as_table("win", M.win, "id of win")
 		table.insert(lines, line)
 		-- home_buf id
 		table.insert(lines, string.rep("-", M.width))
