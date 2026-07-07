@@ -326,6 +326,10 @@ function M.info_buf_setup()
 		table.insert(lines, string.rep("-", M.width))
 		line = "prev     = " .. M.key_to_prev .. " -- go to prev"
 		table.insert(lines, line)
+		-- to toggle status
+		table.insert(lines, string.rep("-", M.width))
+		line = "toggle status = " .. M.key_toggle_status .. " -- toggle status"
+		table.insert(lines, line)
 
 		vim.api.nvim_buf_set_lines(M.info_buf, 0, -1, false, lines)
 	end
