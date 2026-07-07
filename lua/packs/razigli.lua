@@ -283,9 +283,15 @@ function M.info_buf_setup()
 		table.insert(lines, string.rep("=", M.width))
 		table.insert(lines, "PARAMETERS")
 		table.insert(lines, string.rep("-", M.width))
-		table.insert(lines, "width  = " .. M.width .. string.rep(" ", #M.border - 3) .. " -- width of win")
+		table.insert(
+			lines,
+			"width   = " .. M.width .. string.rep(" ", #M.border - #tostring(M.width)) .. " -- width of win"
+		)
 		table.insert(lines, string.rep("-", M.width))
-		table.insert(lines, "height = " .. M.height .. string.rep(" ", #M.border - 3) .. " -- height of win")
+		table.insert(
+			lines,
+			"height  = " .. M.height .. string.rep(" ", #M.border - #tostring(M.height)) .. " -- height of win"
+		)
 		table.insert(lines, string.rep("-", M.width))
 		table.insert(lines, "border	= " .. M.border .. " -- border of win")
 		table.insert(lines, string.rep("-", M.width))
