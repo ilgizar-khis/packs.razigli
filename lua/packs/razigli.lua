@@ -266,35 +266,41 @@ function M.info_buf_setup()
 		end, { buffer = M.info_buf })
 
 		local lines = {}
+		local line = ""
 		-- insert vars
 		table.insert(lines, string.rep("=", M.width))
 		table.insert(lines, "VARS")
+		-- win id
 		table.insert(lines, string.rep("-", M.width))
-		table.insert(lines, "win       = " .. M.win .. " -- id of win")
+		line = "win = " .. M.win .. " -- id of win"
+		table.insert(lines, line)
+		-- home_buf id
 		table.insert(lines, string.rep("-", M.width))
-		table.insert(lines, "home buf  = " .. M.home_buf .. "    -- id of home buf")
+		line = "home buf  = " .. M.home_buf .. "    -- id of home buf"
+		table.insert(lines, line)
+		-- clear_buf id
 		table.insert(lines, string.rep("-", M.width))
-		table.insert(lines, "clear buf = " .. M.clear_buf .. "    -- id of clear buf")
+		line = "clear buf = " .. M.clear_buf .. "    -- id of clear buf"
+		table.insert(lines, line)
+		-- info_buf id
 		table.insert(lines, string.rep("-", M.width))
-		table.insert(lines, "info buf  = " .. M.info_buf .. "    -- id of info buf")
-		table.insert(lines, string.rep("-", M.width))
+		line = "info buf  = " .. M.info_buf .. "    -- id of info buf"
+		table.insert(lines, line)
 
 		-- insert parameters
 		table.insert(lines, string.rep("=", M.width))
 		table.insert(lines, "PARAMETERS")
+		-- width
+		line = "width   = " .. M.width .. string.rep(" ", #M.border - #tostring(M.width)) .. " -- width of win"
+		table.insert(lines, line)
+		-- height
 		table.insert(lines, string.rep("-", M.width))
-		table.insert(
-			lines,
-			"width   = " .. M.width .. string.rep(" ", #M.border - #tostring(M.width)) .. " -- width of win"
-		)
+		line = "height  = " .. M.height .. string.rep(" ", #M.border - #tostring(M.height)) .. " -- height of win"
+		table.insert(lines, line)
+		-- border
 		table.insert(lines, string.rep("-", M.width))
-		table.insert(
-			lines,
-			"height  = " .. M.height .. string.rep(" ", #M.border - #tostring(M.height)) .. " -- height of win"
-		)
-		table.insert(lines, string.rep("-", M.width))
-		table.insert(lines, "border	= " .. M.border .. " -- border of win")
-		table.insert(lines, string.rep("-", M.width))
+		line = "border	= " .. M.border .. " -- border of win"
+		table.insert(lines, line)
 
 		vim.api.nvim_buf_set_lines(M.info_buf, 0, -1, false, lines)
 	end
