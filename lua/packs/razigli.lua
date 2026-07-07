@@ -288,15 +288,15 @@ function M.info_buf_setup()
 		table.insert(lines, line)
 		-- home_buf id
 		table.insert(lines, string.rep("-", M.width))
-		line = "home buf  = " .. M.home_buf .. "    -- id of home buf"
+		line = as_table("home buf", M.home_buf, "id of home buf")
 		table.insert(lines, line)
 		-- clear_buf id
 		table.insert(lines, string.rep("-", M.width))
-		line = "clear buf = " .. M.clear_buf .. "    -- id of clear buf"
+		line = as_table("clear buf", M.clear_buf, "id of clear buf")
 		table.insert(lines, line)
 		-- info_buf id
 		table.insert(lines, string.rep("-", M.width))
-		line = "info buf  = " .. M.info_buf .. "    -- id of info buf"
+		line = as_table("info buf", M.info_buf, "id of info buf")
 		table.insert(lines, line)
 
 		-- insert parameters
