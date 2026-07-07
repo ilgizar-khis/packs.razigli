@@ -25,11 +25,11 @@
 |border|single|border style of win|
 |key_home_buf|1|key goto home_buf|
 |key_clear_buf|2|key goto clear_buf|
-|key_toggle_status|<Space>|key toggle status of prev pkg|
-|key_clear|<CR>|key start delete pkgs|
-|key_update|<S-u>|key update list of pkgs|
-|key_to_next|<Tab>|key goto next pkg|
-|key_to_prev|<S-Tab>|key goto prev pkg|
+|key_toggle_status|\<Space>|key toggle status of prev pkg|
+|key_clear|\<CR>|key start delete pkgs|
+|key_update|\<S-u>|key update list of pkgs|
+|key_to_next|\<Tab>|key goto next pkg|
+|key_to_prev|\<S-Tab>|key goto prev pkg|
 
 ## variables
 
