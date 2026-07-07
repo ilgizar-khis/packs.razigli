@@ -250,7 +250,7 @@ function M.clear_buf_setup()
 	end
 end
 
-local function as_table(lines, name, value, desc)
+local function add_line(lines, name, value, desc)
 	local w = 20
 	if M.width < w * 3 then
 		w = M.width / 3
@@ -285,19 +285,19 @@ function M.info_buf_setup()
 		table.insert(lines, "VARS")
 		-- win id
 		table.insert(lines, string.rep("-", M.width))
-		line = as_table("win", M.win, "id of win")
+		line = add_line("win", M.win, "id of win")
 		table.insert(lines, line)
 		-- home_buf id
 		table.insert(lines, string.rep("-", M.width))
-		line = as_table("home buf", M.home_buf, "id of home buf")
+		line = add_line("home buf", M.home_buf, "id of home buf")
 		table.insert(lines, line)
 		-- clear_buf id
 		table.insert(lines, string.rep("-", M.width))
-		line = as_table("clear buf", M.clear_buf, "id of clear buf")
+		line = add_line("clear buf", M.clear_buf, "id of clear buf")
 		table.insert(lines, line)
 		-- info_buf id
 		table.insert(lines, string.rep("-", M.width))
-		line = as_table("info buf", M.info_buf, "id of info buf")
+		line = add_line("info buf", M.info_buf, "id of info buf")
 		table.insert(lines, line)
 
 		-- insert parameters
