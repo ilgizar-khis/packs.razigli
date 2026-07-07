@@ -296,17 +296,11 @@ function M.info_buf_setup()
 		table.insert(lines, string.rep("=", M.width))
 		table.insert(lines, "PARAMETERS")
 		-- width
-		table.insert(lines, string.rep("-", M.width))
-		line = "width   = " .. M.width .. string.rep(" ", #M.border - #tostring(M.width)) .. " -- width of win"
-		table.insert(lines, line)
+		add_line(lines, "width", M.width, "width of window")
 		-- height
-		table.insert(lines, string.rep("-", M.width))
-		line = "height  = " .. M.height .. string.rep(" ", #M.border - #tostring(M.height)) .. " -- height of win"
-		table.insert(lines, line)
+		add_line(lines, "height", M.height, "height of window")
 		-- border
-		table.insert(lines, string.rep("-", M.width))
-		line = "border	= " .. M.border .. " -- border of win"
-		table.insert(lines, line)
+		add_line(lines, "border", M.border, "border of window")
 
 		-- insert keys
 		table.insert(lines, string.rep("=", M.width))
