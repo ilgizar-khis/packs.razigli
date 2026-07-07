@@ -213,6 +213,11 @@ function M.clear_buf_setup()
 			vim.api.nvim_win_set_buf(M.win, M.home_buf)
 			M.winbar()
 		end, { buffer = M.clear_buf })
+		-- keymap to jump info_buf
+		vim.keymap.set("n", M.key_info_buf, function()
+			vim.api.nvim_win_set_buf(M.win, M.info_buf)
+			M.winbar()
+		end, { buffer = M.clear_buf })
 		-- keymap to clear
 		vim.keymap.set("n", M.key_clear, function()
 			M.clear()
