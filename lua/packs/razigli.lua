@@ -284,21 +284,13 @@ function M.info_buf_setup()
 		table.insert(lines, string.rep("=", M.width))
 		table.insert(lines, "VARS")
 		-- win id
-		table.insert(lines, string.rep("-", M.width))
-		line = add_line("win", M.win, "id of win")
-		table.insert(lines, line)
+		add_line(lines, "win", M.win, "id of win")
 		-- home_buf id
-		table.insert(lines, string.rep("-", M.width))
-		line = add_line("home buf", M.home_buf, "id of home buf")
-		table.insert(lines, line)
+		add_line(lines, "home_buf", M.home_buf, "id of home_buf")
 		-- clear_buf id
-		table.insert(lines, string.rep("-", M.width))
-		line = add_line("clear buf", M.clear_buf, "id of clear buf")
-		table.insert(lines, line)
+		add_line(lines, "clear_buf", M.clear_buf, "id of clear_buf")
 		-- info_buf id
-		table.insert(lines, string.rep("-", M.width))
-		line = add_line("info buf", M.info_buf, "id of info buf")
-		table.insert(lines, line)
+		add_line(lines, "info_buf", M.info_buf, "id of info_buf")
 
 		-- insert parameters
 		table.insert(lines, string.rep("=", M.width))
