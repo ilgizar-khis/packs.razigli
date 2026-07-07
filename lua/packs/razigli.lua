@@ -250,15 +250,14 @@ function M.clear_buf_setup()
 	end
 end
 
-local function add_line(lines, name, value, desc)
+local function add_line(lines, name, value)
 	local w = 20
-	if M.width < w * 3 then
-		w = M.width / 3
+	if M.width < w * 2 then
+		w = M.width / 2
 	end
 	local line = ""
 	line = line .. name .. string.rep(" ", w - #tostring(name))
 	line = line .. "= " .. value .. string.rep(" ", w - #tostring(value))
-	line = line .. "-- " .. desc
 	table.insert(lines, string.rep("-", M.width))
 	table.insert(lines, line)
 end
@@ -284,51 +283,43 @@ function M.info_buf_setup()
 		table.insert(lines, string.rep("=", M.width))
 		table.insert(lines, "VARS")
 		-- win id
-		add_line(lines, "win", M.win, "id of win")
+		add_line(lines, "win", M.win)
 		-- home_buf id
-		add_line(lines, "home_buf", M.home_buf, "id of home_buf")
+		add_line(lines, "home_buf", M.home_buf)
 		-- clear_buf id
-		add_line(lines, "clear_buf", M.clear_buf, "id of clear_buf")
+		add_line(lines, "clear_buf", M.clear_buf)
 		-- info_buf id
-		add_line(lines, "info_buf", M.info_buf, "id of info_buf")
+		add_line(lines, "info_buf", M.info_buf)
 
 		-- insert parameters
 		table.insert(lines, string.rep("=", M.width))
 		table.insert(lines, "PARAMETERS")
 		-- width
-		add_line(lines, "width", M.width, "width of window")
+		add_line(lines, "width", M.width)
 		-- height
-		add_line(lines, "height", M.height, "height of window")
+		add_line(lines, "height", M.height)
 		-- border
-		add_line(lines, "border", M.border, "border of window")
+		add_line(lines, "border", M.border)
 
 		-- insert keys
 		table.insert(lines, string.rep("=", M.width))
 		table.insert(lines, "KEYS")
 		-- to home buf
-		table.insert(lines, string.rep("-", M.width))
-		line = "to home  = " .. M.key_home_buf .. " -- go to home"
-		table.insert(lines, line)
+		add_line(lines, "to home buf", M.key_home_buf)
 		-- to clear buf
-		table.insert(lines, string.rep("-", M.width))
-		line = "to clear = " .. M.key_clear_buf .. " -- go to clear"
-		table.insert(lines, line)
+		add_line(lines, "to clear buf", M.key_clear_buf)
 		-- to info buf
-		table.insert(lines, string.rep("-", M.width))
-		line = "to info  = " .. M.key_info_buf .. " -- go to info"
-		table.insert(lines, line)
+		add_line(lines, "to info buf", M.key_info_buf)
 		-- to next item
-		table.insert(lines, string.rep("-", M.width))
-		line = "next     = " .. M.key_to_next .. " -- go to next"
-		table.insert(lines, line)
+		add_line(lines, "to next item", M.key_to_next)
 		-- to prev item
-		table.insert(lines, string.rep("-", M.width))
-		line = "prev     = " .. M.key_to_prev .. " -- go to prev"
-		table.insert(lines, line)
+		add_line(lines, "to prev item", M.key_to_prev)
 		-- to toggle status
-		table.insert(lines, string.rep("-", M.width))
-		line = "toggle status = " .. M.key_toggle_status .. " -- toggle status"
-		table.insert(lines, line)
+		add_line(lines, "toggle status", M.key_toggle_status)
+		-- to update
+		add_line(lines, "update list", M.key_toggle_status)
+		-- to clear
+		add_line(lines, "toggle status", M.key_toggle_status)
 
 		vim.api.nvim_buf_set_lines(M.info_buf, 0, -1, false, lines)
 	end
