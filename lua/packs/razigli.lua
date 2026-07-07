@@ -277,6 +277,17 @@ function M.info_buf_setup()
 		table.insert(lines, string.rep("-", M.width))
 		table.insert(lines, "info buf  = " .. M.info_buf .. "    -- id of info buf")
 		table.insert(lines, string.rep("-", M.width))
+
+		-- insert parameters
+		table.insert(lines, "PARAMETERS")
+		table.insert(lines, string.rep("-", M.width))
+		table.insert(lines, "width  = " .. M.width .. string.rep(" ", #M.border - 3) .. " -- width of win")
+		table.insert(lines, string.rep("-", M.width))
+		table.insert(lines, "height =" .. M.height .. string.rep(" ", #M.border - 3) .. " -- height of win")
+		table.insert(lines, string.rep("-", M.width))
+		table.insert(lines, "border	= " .. M.border .. " -- border of win")
+		table.insert(lines, string.rep("-", M.width))
+
 		vim.api.nvim_buf_set_lines(M.info_buf, 0, -1, false, lines)
 	end
 end
