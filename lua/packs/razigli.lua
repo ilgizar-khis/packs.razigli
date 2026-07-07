@@ -268,10 +268,10 @@ function M.info_buf_setup()
 		local lines = {}
 		-- insert vars
 		table.insert(lines, "VARS")
-		table.insert(lines, "win = " .. M.win .. "| id of win")
-		table.insert(lines, "home buf = " .. M.home_buf .. "| id of home buf")
-		table.insert(lines, "clear buf = " .. M.clear_buf .. "| id of clear buf")
-		table.insert(lines, "info buf = " .. M.info_buf .. "| id of info buf")
+		table.insert(lines, "win       = " .. M.win .. " -- id of win")
+		table.insert(lines, "home buf  = " .. M.home_buf .. "    -- id of home buf")
+		table.insert(lines, "clear buf = " .. M.clear_buf .. "    -- id of clear buf")
+		table.insert(lines, "info buf  = " .. M.info_buf .. "    -- id of info buf")
 		vim.api.nvim_buf_set_lines(M.info_buf, 0, -1, false, lines)
 	end
 end
