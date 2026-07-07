@@ -250,6 +250,18 @@ function M.clear_buf_setup()
 	end
 end
 
+local function as_table(name, value, desc)
+	local w = 40
+	if M.width < 120 then
+		w = M.width / 3
+	end
+	local line = ""
+	line = line .. name .. string.rep(" ", w - #tostring(name))
+	line = line .. "= " .. value .. string.rep(" ", w - #tostring(value))
+	line = line .. "-- " .. desc
+	return line
+end
+
 -- info_buf_setup
 function M.info_buf_setup()
 	if not M.info_buf or not vim.api.nvim_buf_is_valid(M.info_buf) then
