@@ -20,8 +20,6 @@
 
 |name|value|desc|
 |----|:----------:|----|
-|home_buf|nil|id of home_buf|
-|clear_buf|nil|id of clear_buf|
 |width|160|width of win|
 |height|40|height of win|
 |border|single|border style of win|
@@ -32,5 +30,12 @@
 |key_update|<S-u>|key update list of pkgs|
 |key_to_next|<Tab>|key goto next pkg|
 |key_to_prev|<S-Tab>|key goto prev pkg|
-|info|nil|info str|
+
+## variables
+
+|name|value|desc|
+|----|-----|----|
+|win | nil | id of win, if nil => win is not exists |
+|home_buf | nil | id of home_buf, if nil => buf is not exists|
+|clear_buf | nil | id of clear_buf, if nil => buf is not exists|
 
