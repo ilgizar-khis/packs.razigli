@@ -117,9 +117,11 @@ function M.winbar()
 	local winbar = ""
 	-- check buffer and set bufferline text
 	if buf == M.home_buf then
-		winbar = "[1:home]  2:clear "
-	else
-		winbar = " 1:home  [2:clear]"
+		winbar = "[1:home]  2:clear   3:info "
+	elseif buf == M.clear_buf then
+		winbar = " 1:home  [2:clear]  3:info "
+	elseif buf == M.info_buf then
+		winbar = " 1:home   2:clear  [3:info]"
 	end
 	-- add info
 	winbar = winbar .. " | " .. M.info
