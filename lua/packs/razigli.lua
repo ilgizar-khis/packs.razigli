@@ -95,12 +95,12 @@ end
 -- function to clear pkgs
 function M.clear()
 	-- get lines from clear_buf
-	local lines = vim.api.nvim_buf_get_lines(M.clear_buf, 2, -1, false)
+	local lines = vim.api.nvim_buf_get_lines(M.clear_buf, 0, -1, false)
 	local to_clear = {}
 	-- delete all pkgs
 	for _, line in ipairs(lines) do
 		if string.find(line, "^%[%-%]") then
-			table.insert(to_clear, string.match(line, "^%[%-%] name = (.+)"))
+			table.insert(to_clear, string.match(line, "^%[%-%] name = (.+)$"))
 		end
 	end
 	-- delete pkgs
