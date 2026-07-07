@@ -286,6 +286,4 @@ function M.setup(opts)
 	end
 end
 
-print("Hello world")
-
 return M
