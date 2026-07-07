@@ -13,7 +13,7 @@
 |to_prev() |go to prev item.
 |toggle_status() |toggle status of disabled package.
 |clear() |delete all marked as minus \[-\] disabled packages.
-|update() |update list of packahes.
+|update() |update list of packages.
 
 
 ## default parameters
@@ -25,6 +25,7 @@
 |border|single|border style of win|
 |key_home_buf|1|key goto home_buf|
 |key_clear_buf|2|key goto clear_buf|
+|key_info_buf|3|key goto info_buf|
 |key_toggle_status|\<Space>|key toggle status of prev pkg|
 |key_clear|\<CR>|key start delete pkgs|
 |key_update|\<S-u>|key update list of pkgs|
@@ -38,6 +39,7 @@
 |win | nil | id of win, if nil => win is not exists |
 |home_buf | nil | id of home_buf, if nil => buf is not exists|
 |clear_buf | nil | id of clear_buf, if nil => buf is not exists|
+|info_buf | nil | id of info_buf, if nil => buf is not exists|
 
 ## usage example: vim.pack
 
