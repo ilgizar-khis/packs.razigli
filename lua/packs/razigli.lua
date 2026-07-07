@@ -283,23 +283,23 @@ function M.info_buf_setup()
 		table.insert(lines, string.rep("=", M.width))
 		table.insert(lines, "VARS")
 		-- win id
-		add_line(lines, "win", M.win)
+		add_line(lines, "id of win", M.win)
 		-- home_buf id
-		add_line(lines, "home_buf", M.home_buf)
+		add_line(lines, "id of home buf", M.home_buf)
 		-- clear_buf id
-		add_line(lines, "clear_buf", M.clear_buf)
+		add_line(lines, "id of clear buf", M.clear_buf)
 		-- info_buf id
-		add_line(lines, "info_buf", M.info_buf)
+		add_line(lines, "id of info buf", M.info_buf)
 
 		-- insert parameters
 		table.insert(lines, string.rep("=", M.width))
 		table.insert(lines, "PARAMETERS")
 		-- width
-		add_line(lines, "width", M.width)
+		add_line(lines, "width of win", M.width)
 		-- height
-		add_line(lines, "height", M.height)
+		add_line(lines, "height of win", M.height)
 		-- border
-		add_line(lines, "border", M.border)
+		add_line(lines, "border of win", M.border)
 
 		-- insert keys
 		table.insert(lines, string.rep("=", M.width))
