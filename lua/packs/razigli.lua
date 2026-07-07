@@ -318,11 +318,11 @@ function M.info_buf_setup()
 		table.insert(lines, string.rep("-", M.width))
 		line = "to info  = " .. M.key_info_buf .. " -- go to info"
 		table.insert(lines, line)
-		-- to next buf
+		-- to next item
 		table.insert(lines, string.rep("-", M.width))
 		line = "next     = " .. M.key_to_next .. " -- go to next"
 		table.insert(lines, line)
-		-- to prev buf
+		-- to prev item
 		table.insert(lines, string.rep("-", M.width))
 		line = "prev     = " .. M.key_to_prev .. " -- go to prev"
 		table.insert(lines, line)
