@@ -266,7 +266,7 @@ function M.info_buf_setup()
 		end, { buffer = M.info_buf })
 
 		local lines = {}
-		-- insert parametrs
+		-- insert vars
 		table.insert(lines, "VARS")
 		table.insert(lines, "win = " .. M.win .. "| id of win")
 		table.insert(lines, "home buf = " .. M.home_buf .. "| id of home buf")
