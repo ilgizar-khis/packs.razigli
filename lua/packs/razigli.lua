@@ -267,6 +267,7 @@ function M.info_buf_setup()
 
 		local lines = {}
 		-- insert vars
+		table.insert(lines, string.rep("=", M.width))
 		table.insert(lines, "VARS")
 		table.insert(lines, string.rep("-", M.width))
 		table.insert(lines, "win       = " .. M.win .. " -- id of win")
@@ -279,6 +280,7 @@ function M.info_buf_setup()
 		table.insert(lines, string.rep("-", M.width))
 
 		-- insert parameters
+		table.insert(lines, string.rep("=", M.width))
 		table.insert(lines, "PARAMETERS")
 		table.insert(lines, string.rep("-", M.width))
 		table.insert(lines, "width  = " .. M.width .. string.rep(" ", #M.border - 3) .. " -- width of win")
