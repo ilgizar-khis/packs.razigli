@@ -236,6 +236,23 @@ function M.clear_buf_setup()
 	end
 end
 
+-- info_buf_setup
+function M.info_buf_setup()
+	if not M.info_buf or not vim.api.nvim_buf_is_valid(M.info_buf) then
+		M.info_buf = vim.api.nvim_create_buf(false, true)
+		-- keymap to jump home_buf
+		vim.keymap.set("n", M.key_home_buf, function()
+			vim.api.nvim_win_set_buf(M.win, M.home_buf)
+			M.winbar()
+		end, { buffer = M.info_buf })
+		-- keymap to jump to clear_buf
+		vim.keymap.set("n", M.key_clear_buf, function()
+			vim.api.nvim_win_set_buf(M.win, M.clear_buf)
+			M.winbar()
+		end, { buffer = M.info_buf })
+	end
+end
+
 -- function to setup win
 function M.win_setup()
 	-- calculate col and row params
