@@ -317,9 +317,9 @@ function M.info_buf_setup()
 		-- to toggle status
 		add_line(lines, "toggle status", M.key_toggle_status)
 		-- to update
-		add_line(lines, "update list", M.key_toggle_status)
+		add_line(lines, "update list", M.key_update)
 		-- to clear
-		add_line(lines, "toggle status", M.key_toggle_status)
+		add_line(lines, "toggle status", M.key_clear)
 
 		vim.api.nvim_buf_set_lines(M.info_buf, 0, -1, false, lines)
 	end
