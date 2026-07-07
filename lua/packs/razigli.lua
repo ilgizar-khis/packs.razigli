@@ -308,23 +308,23 @@ function M.info_buf_setup()
 		table.insert(lines, "KEYS")
 		-- to home buf
 		table.insert(lines, string.rep("-", M.width))
-		line = "home = " .. M.key_home_buf .. " -- go to home"
+		line = "to home  = " .. M.key_home_buf .. " -- go to home"
 		table.insert(lines, line)
 		-- to clear buf
 		table.insert(lines, string.rep("-", M.width))
-		line = "clear = " .. M.key_clear_buf .. " -- go to clear"
+		line = "to clear = " .. M.key_clear_buf .. " -- go to clear"
 		table.insert(lines, line)
 		-- to info buf
 		table.insert(lines, string.rep("-", M.width))
-		line = "info = " .. M.key_info_buf .. " -- go to info"
+		line = "to info  = " .. M.key_info_buf .. " -- go to info"
 		table.insert(lines, line)
 		-- to next buf
 		table.insert(lines, string.rep("-", M.width))
-		line = "next = " .. M.key_to_next .. " -- go to next"
+		line = "next     = " .. M.key_to_next .. " -- go to next"
 		table.insert(lines, line)
 		-- to prev buf
 		table.insert(lines, string.rep("-", M.width))
-		line = "prev = " .. M.key_to_prev .. " -- go to prev"
+		line = "prev     = " .. M.key_to_prev .. " -- go to prev"
 		table.insert(lines, line)
 
 		vim.api.nvim_buf_set_lines(M.info_buf, 0, -1, false, lines)
