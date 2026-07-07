@@ -250,7 +250,7 @@ function M.clear_buf_setup()
 	end
 end
 
-local function as_table(name, value, desc)
+local function as_table(lines, name, value, desc)
 	local w = 20
 	if M.width < w * 3 then
 		w = M.width / 3
@@ -259,7 +259,8 @@ local function as_table(name, value, desc)
 	line = line .. name .. string.rep(" ", w - #tostring(name))
 	line = line .. "= " .. value .. string.rep(" ", w - #tostring(value))
 	line = line .. "-- " .. desc
-	return line
+	table.insert(lines, string.rep("-", M.width))
+	table.insert(lines, line)
 end
 
 -- info_buf_setup
