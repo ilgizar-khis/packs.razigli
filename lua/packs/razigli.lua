@@ -3,6 +3,7 @@ local M = {
 	win = nil, -- id of win
 	home_buf = nil, -- id of home_buf
 	clear_buf = nil, -- id of clear_buf
+	info_buf = nil,
 	width = 160, -- width of win
 	height = 40, -- height of win
 	border = "single", -- border style of win
@@ -13,7 +14,6 @@ local M = {
 	key_update = "<S-u>", -- key "update list of pkgs"
 	key_to_next = "<Tab>", -- key "goto next pkg"
 	key_to_prev = "<S-Tab>", -- key "goto prev pkg"
-	info = nil, -- info str
 }
 
 -- goto next pkg
