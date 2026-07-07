@@ -189,6 +189,11 @@ function M.home_buf_setup()
 			vim.api.nvim_win_set_buf(M.win, M.clear_buf)
 			M.winbar()
 		end, { buffer = M.home_buf })
+		-- keymap to jump info_buf
+		vim.keymap.set("n", M.key_info_buf, function()
+			vim.api.nvim_win_set_buf(M.win, M.info_buf)
+			M.winbar()
+		end, { buffer = M.home_buf })
 		-- update data
 		vim.keymap.set("n", M.key_update, function()
 			M.update()
