@@ -15,6 +15,7 @@ local M = {
 	key_update = "<S-u>", -- key "update list of pkgs"
 	key_to_next = "<Tab>", -- key "goto next pkg"
 	key_to_prev = "<S-Tab>", -- key "goto prev pkg"
+	winbar_info = nil,
 }
 
 -- goto next pkg
@@ -124,7 +125,7 @@ function M.winbar()
 		winbar = " 1:home   2:clear  [3:info]"
 	end
 	-- add info
-	winbar = winbar .. " | " .. M.info
+	winbar = winbar .. " | " .. M.winbar_info
 	-- set options
 	vim.api.nvim_win_set_option(M.win, "winbar", winbar)
 end
@@ -171,7 +172,7 @@ function M.update()
 	local lines = M.parse_all_pkgs(data)
 	-- get list of disables pkgs
 	local to_clear_lines, to_clear_count = M.parse_to_clear_pkgs(data)
-	M.info = "[" .. #data .. ", +" .. #data - to_clear_count .. ", -" .. to_clear_count .. "]"
+	M.winbar_info = "[" .. #data .. ", +" .. #data - to_clear_count .. ", -" .. to_clear_count .. "]"
 	M.winbar()
 	-- append data tp home_buf
 	if M.home_buf then
